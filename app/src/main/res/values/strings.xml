@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ImageButtonTest</string>
+    <string name="textExample2">Nothing Selected</string>
+    <string name="textExample1">Selected</string>
+</resources>
