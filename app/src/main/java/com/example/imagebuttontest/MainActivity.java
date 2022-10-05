@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -18,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void toggle(int i, ImageButton b){
         if (nums[i] == 0) {
-            b.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
+            b.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
             nums[i] = 1;
         } else {
-            b.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+            b.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
             nums[i] = 0;
         }
     }
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         torso = (ImageButton) getWindow().findViewById(R.id.imageButton4);
         lleg  = (ImageButton) getWindow().findViewById(R.id.imageButton5);
         rleg  = (ImageButton) getWindow().findViewById(R.id.imageButton6);
-        ImageButton part[] = new ImageButton[]{larm,rarm,head,torso,lleg,rleg};
+        //ImageButton[] part = new ImageButton[]{larm,rarm,head,torso,lleg,rleg};
 
 
         //Example of how this would work for all body components
