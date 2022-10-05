@@ -2,14 +2,10 @@ package com.example.imagebuttontest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -18,7 +14,17 @@ public class MainActivity extends AppCompatActivity {
 
     TextView txt;
     ImageButton larm, rarm, head, torso, lleg, rleg;
-    int arr[] = {0,0,0,0,0,0};
+    int[] nums = new int[]{0,0,0,0,0,0};
+
+    public void toggle(int i, ImageButton b){
+        if (nums[i] == 0) {
+            b.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
+            nums[i] = 1;
+        } else {
+            b.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+            nums[i] = 0;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,42 +40,16 @@ public class MainActivity extends AppCompatActivity {
         torso = (ImageButton) getWindow().findViewById(R.id.imageButton4);
         lleg  = (ImageButton) getWindow().findViewById(R.id.imageButton5);
         rleg  = (ImageButton) getWindow().findViewById(R.id.imageButton6);
+        ImageButton part[] = new ImageButton[]{larm,rarm,head,torso,lleg,rleg};
+
 
         //Example of how this would work for all body components
         //On Click Listener for Image Button Example
-        larm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View v){
-                CharSequence temp = txt.getText();
-                if (arr[0] == 0) {
-                    //txt.setText(R.string.textExample2); //textExample2 located in the /res/values/colors.xml file
-                    larm.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
-                    arr[0] = 1;
-                } else {
-                    //String str = "Left Arm ";
-                    //txt.setText(str.concat(getString(R.string.textExample1))); //textExample1 located in the /res/values/colors.xml file
-                    larm.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
-                    arr[0] = 0;
-                }
-            }
-        });
-
-        //On Click Listener for Image Button Example
-        rarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View v){
-                CharSequence temp = txt.getText();
-                if (arr[1] == 0) {
-                    //txt.setText(R.string.textExample2); //textExample2 located in the /res/values/colors.xml file
-                    rarm.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
-                    arr[1] = 1;
-                } else {
-                    //String str = "Right Arm ";
-                    //txt.setText(str.concat(getString(R.string.textExample1))); //textExample1 located in the /res/values/colors.xml file
-                    rarm.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
-                    arr[1] = 0;
-                }
-            }
-        });
+        larm.setOnClickListener(v -> toggle(0, larm));
+        rarm.setOnClickListener(v -> toggle(1, rarm));
+        head.setOnClickListener(v -> toggle(2, head));
+        torso.setOnClickListener(v -> toggle(3, torso));
+        lleg.setOnClickListener(v -> toggle(4, lleg));
+        rleg.setOnClickListener(v -> toggle(5, rleg));
     }
 }
